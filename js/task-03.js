@@ -12,3 +12,26 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+function render() {
+const ul = document.querySelector(".gallery");
+
+  
+  const cards = images.map(item => `<li style="display:'flex';"><img src=${item.url} alt=${item.alt} width=200px/> 
+  </li >`
+
+  ).join("");
+  ul.style.listStyle = "none";
+  ul.style.display = "flex";
+  ul.style.flexDirection = "row";
+  ul.style.gap = "15px";
+
+  ul.insertAdjacentHTML("afterbegin", cards);
+}
+
+
+
+// galleryEl.insertAdjacentElement
+
+
+render();
