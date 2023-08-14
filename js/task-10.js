@@ -13,10 +13,19 @@ const boxesEl = document.querySelector("#boxes");
 let initialSize = 30;
 
 createButtonEl.addEventListener("click", () => {
-  const inputValue = inputEl.value; 
-  let boxesMarkup = "";
+  const inputValue = +inputEl.value; 
+  const inputMinValue = +inputEl.getAttribute("min");
+  const inputMaxValue = +inputEl.getAttribute("max");
+  const stepValue = +inputEl.getAttribute("step");
 
-  for (let i = 0; i < inputValue; i += 1) {
+  let boxesMarkup = "";
+  if (inputValue < inputMinValue || inputValue > inputMaxValue) {
+    alert("Value must be in 1-100 range");
+    return;
+  };
+  
+  for (let i = 0; i < inputValue; i += stepValue) {
+
     const randomColor = getRandomHexColor();
     const oneBoxMarkup = `<div style="width:${initialSize}px; height:${initialSize}px;background-color:${randomColor};"></div>`;
     initialSize += 10;
@@ -24,10 +33,10 @@ createButtonEl.addEventListener("click", () => {
   }
 
   initialSize = 30;
-  boxesEl.innerHTML = boxesMarkup;
+  boxesEl.insertAdjacentHTML("beforeend", boxesMarkup);
  });
 
 destroyButtonEl.addEventListener("click", () => {
   boxesEl.innerHTML = "";
-
+  inputEl.value = "";
  })

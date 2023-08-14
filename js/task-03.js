@@ -14,19 +14,19 @@ const images = [
 ];
 
 function render() {
-const ul = document.querySelector(".gallery");
+const listEl = document.querySelector(".gallery");
 
   
   const cards = images.map(item => `<li style="display:'flex';"><img src=${item.url} alt=${item.alt} width=200px/> 
   </li >`
 
   ).join("");
-  ul.style.listStyle = "none";
-  ul.style.display = "flex";
-  ul.style.flexDirection = "row";
-  ul.style.gap = "15px";
+  listEl.style.listStyle = "none";
+  listEl.style.display = "flex";
+  listEl.style.flexDirection = "row";
+  listEl.style.gap = "15px";
 
-  ul.insertAdjacentHTML("afterbegin", cards);
+  listEl.insertAdjacentHTML("afterbegin", cards);
 }
 
 
